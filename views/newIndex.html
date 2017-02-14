@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title> TODO LIST </title>
+   <link rel="stylesheet" type="text/css" href="mystyle.css">
+   <link rel="stylesheet" type="text/css" href="index.css">
+   <link rel="stylesheet" type="text/css" href="base.css">
+</head>
+<body onload="fetchTodo()">
+  <section class="todoapp">
+    <header class="header">    
+    <h1>todos</h1>
+    <input class="new-todo" type="text" id="new-todo" placeholder="What needs to be done?" autofocus>
+</header>
+  <section class="main" >
+    <input class ="toggle-all" type="checkbox"> 
+    <label for="toggle-all">Mark all as complete</label>
+    <ul class="todo-list"></ul>
+    </section>
+   <footer class="footer">
+				<span class="todo-count"></span>
+				<ul class="filters">
+					<li>
+						<a href="#/" class="selected">All</a>
+					</li>
+					<li>
+						<a href="#/active" class >Active</a>
+					</li>
+					<li>
+						<a href="#/completed">Completed</a>
+					</li>
+				</ul>
+				<button class="clear-completed">Clear completed</button>
+			</footer>
+		</section>
+<footer class="info">
+  <p>Double click to edit a todo </p>
+  <p>Created by Rishabh Saxena</p>
+  <p>Intern</p>
+  <p>McKinsey and Co.</p>
+</footer>    
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+    </body>
+</html>
