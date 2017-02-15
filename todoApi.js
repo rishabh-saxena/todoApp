@@ -41,10 +41,14 @@ app.delete('/destroy/:id', function (req, res) {
   deleteTask.then(() => { res.send('Deleted the information') })
   .catch(() => { res.sendStatus(500) })
 })
-app.delete('destroy', function (req, res) {
-  const clearCompleted = clearCompleted()
-  clearCompleted.then(() => { res.send('Deleted the information') })
-  .catch(() => { res.sendStatus(500) })
+app.delete('/destroyCompleted', function (req, res) {
+  const clearComplete = clearCompleted()
+  clearComplete.then(() => { res.send('Deleted the information') })
+  .catch((error) => {
+    console.log(error)
+    res.sendStatus(500)
+  })
+  // res.status(200).send({data: 'worked'})
 })
 app.get('/active', function (req, res) {
   const active = activeTasks()
