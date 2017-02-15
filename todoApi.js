@@ -1,7 +1,7 @@
 const express = require('express')
 const fs = require('fs')
 const bodyParser = require('body-parser')
-const {createTask, readTask, updateTask, destroyTask, activeTasks, completedTasks} = require('./dbTasks')
+const {createTask, readTask, updateTask, destroyTask, activeTasks, completedTasks, checkAll, clearCompleted} = require('./dbTasks')
 // const filePath = process.argv[2]
 const app = express()
 app.use(express.static('views'))
@@ -21,7 +21,9 @@ app.get('/read', function (req, res) {
 app.post('/write/:message', function (req, res) {
   const taskMessage = req.params.message
   const createTasks = createTask(taskMessage)
-  createTasks.then(() => { res.send('Successfully added to the database') })
+  createTasks.then((task) => {
+    res.send(task[0].id.toString())
+  })
   .catch(() => { res.sendStatus(500) })
 })
 app.put('/update/:id', function (req, res) {
@@ -39,6 +41,11 @@ app.delete('/destroy/:id', function (req, res) {
   deleteTask.then(() => { res.send('Deleted the information') })
   .catch(() => { res.sendStatus(500) })
 })
+app.delete('destroy', function (req, res) {
+  const clearCompleted = clearCompleted()
+  clearCompleted.then(() => { res.send('Deleted the information') })
+  .catch(() => { res.sendStatus(500) })
+})
 app.get('/active', function (req, res) {
   const active = activeTasks()
   active.then((data) => { return res.send(data[0]) })
@@ -47,6 +54,13 @@ app.get('/active', function (req, res) {
 app.get('/completed', function (req, res) {
   const completed = completedTasks()
   completed.then((data) => res.send(data))
+  .catch(() => { res.sendStatus(500) })
+})
+app.put('/checkAll', function (req, res) {
+  const statusCheck = req.body.status
+  console.log(statusCheck)
+  const check = checkAll(statusCheck)
+  check.then((data) => res.send(data))
   .catch(() => { res.sendStatus(500) })
 })
 app.listen(3426)

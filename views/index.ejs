@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title> TODO LIST </title>
+</head>
+<body>
+<!--<div>-->
+<h2>Display of items </h2>
+<script>
+function printList()
+{
+fetch('/read', {
+	method: 'get'
+}).then(function(response) {
+	console.log(response);
+}).catch(function(err) {
+	// Error :(
+});
+}
+</script>
+<form action =printList() method = 'GET'>
+<input type = 'submit' value='TodoList'>
+</form>
+  <!-- <ol>
+    <% fileMessageArray.forEach(function(fileElement) { %>
+        <li><%= fileElement %></li>
+    <% }); %>
+</ol>
+</div> -->
+<!-- <form action ='http://localhost:3425/write' method = 'POST'>
+    <h1>ADD TEXT TO FILE </h1>
+    <h2> Input Text </h2>
+<input type = 'text' name = 'inputText'> 
+<input type = 'submit' value = 'Submit'>
+</form>
+<form action ='http://localhost:3425/update' method = 'POST'>
+    <h1>UPDATE TEXT FILE </h1>
+    <h2> Input Text </h2>
+<input type = 'text' name = 'lineNumber' placeholder='Line number'> 
+<input type = 'text' name = 'textUpdate' placeholder='Text to be updated'> 
+<input type = 'submit' value = 'Submit'>
+</form>
+<form action ='http://localhost:3425/destroy' method = 'POST'>
+    <h1>DELETE TEXT FROM FILE </h1>
+    <h2> Input Text </h2>
+<input type = 'text' name = 'lineNumber' placeholder='Line number'> 
+<input type = 'submit' value = 'Submit'>
+</form>
+-->
+</body>
+</html>
